@@ -4,6 +4,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { MenuIcon } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
+//Record<string, string> : This is a TypeScript utility type that represents an object with string keys and string values.
 const pageTitles: Record<string, string> = {
     "/dashboard" : "Dashboard",
     "/accounts": "Social Accounts",

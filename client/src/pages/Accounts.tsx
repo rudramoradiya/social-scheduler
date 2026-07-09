@@ -1,3 +1,5 @@
+//this page is for managing connected social media accounts. It allows users to view their connected accounts, connect new accounts, and disconnect existing ones. It also handles syncing accounts after a successful connection or disconnection.
+
 import { useEffect, useState } from "react"
 import { PLATFORMS } from "../assets/assets"
 import { PlusIcon } from "lucide-react"
