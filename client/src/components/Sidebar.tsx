@@ -4,8 +4,11 @@ import { useAuth } from '../context/AuthContext'
 
 const Sidebar = ({isOpen, setIsOpen} : {isOpen: boolean, setIsOpen: (val: boolean) => void}) => {
 
+//({isOpen, setIsOpen} : {isOpen: boolean, setIsOpen: (val: boolean) => void}) => {} : This is a TypeScript type annotation for the props of the Sidebar component. It specifies that the component expects two props: isOpen, which is a boolean indicating whether the sidebar is open or closed, and setIsOpen, which is a function that takes a boolean value and returns void (does not return anything). This helps ensure that the component receives the correct types of props when used elsewhere in the application.
+
     const {logout, user} = useAuth()
 
+    //useLocation hook is used to get the current location object, which contains information about the current URL. This is useful for determining which navigation item should be highlighted as active based on the current path.
     const location = useLocation()
 
     const navItems = [
@@ -35,6 +38,7 @@ const Sidebar = ({isOpen, setIsOpen} : {isOpen: boolean, setIsOpen: (val: boolea
        {/* Nav links */}
        <nav className='flex-1 px-3 space-y-1'>
             {navItems.map((item)=>{
+                // isqActive variable checks if the current location's pathname matches the item's path.
                 const isActive = location.pathname === item.path;
 
                 return (

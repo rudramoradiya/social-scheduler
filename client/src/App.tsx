@@ -15,6 +15,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
+                //layout component is used to wrap the dashboard, accounts, schedule, and ai-composer pages. It provides a consistent layout and navigation for these pages.
                 <Route element={<Layout />}>
                     <Route path="/dashboard" element={<Dashboard />}/>
                     <Route path="/accounts" element={<Accounts />}/>
