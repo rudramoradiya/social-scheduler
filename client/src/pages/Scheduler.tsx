@@ -28,7 +28,7 @@ const Scheduler = () => {
     (async ()=> await fetchPosts())();
     const interval = setInterval(async ()=> await fetchPosts(), 10000);
     return ()=> clearInterval(interval)
-  },[])
+  },[])                   
 
   const scheduled = posts.filter((p)=> p.status === "scheduled")
   const published = posts.filter((p)=> p.status === "published")
@@ -82,7 +82,7 @@ const Scheduler = () => {
         <div className="bg-white rounded-2xl border border-slate-200 p-6">
             <div className="flex items-center gap-2 mb-6">
               <h2 className="text-lg text-slate-700">Compose Post</h2>
-            </div>
+            </div> 
 
             <form className="space-y-5" onSubmit={handleSchedule}>
               {/* Platforms */}
