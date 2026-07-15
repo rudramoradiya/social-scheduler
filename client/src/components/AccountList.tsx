@@ -1,6 +1,7 @@
 import { AlertCircleIcon, CheckCircleIcon, PlusIcon, UnplugIcon } from "lucide-react";
 import { PLATFORMS } from "../assets/assets";
 
+//interface for props which includes an array of accounts and a function to handle disconnection of an account
 interface AccountListProps {
     accounts: any[];
     onDisconnect: (accountId: string)=> Promise<void>
