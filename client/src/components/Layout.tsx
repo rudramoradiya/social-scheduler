@@ -22,6 +22,7 @@ const Layout = () => {
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+    // If the authentication status is still loading, display a loading spinner. If the user is not authenticated, redirect them to the login page. Otherwise, render the main layout with the sidebar and content area.
     if(isLoading){
         return (
             <div className="flex h-screen items-center justify-center bg-slate-50">
@@ -30,6 +31,7 @@ const Layout = () => {
         )
     }
 
+    // If the user is not authenticated, redirect them to the login page.
     if(!isAuthenticated){
         return <Navigate to="/login" replace/>
     }

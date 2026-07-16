@@ -109,6 +109,7 @@ export const syncAccounts = async (req: AuthRequest, res: Response) : Promise<vo
                     status: "connected",
                     avatarUrl: zAccount.avatarUrl || zAccount.picture || zAccount.profile_image_url,
                 },
+                //upsert: true means if the account doesn't exist, create a new one. returnDocument: 'after' means return the updated document after the update.
                 {upsert: true, returnDocument: 'after'}
             )
             syncedAccounts.push(account)

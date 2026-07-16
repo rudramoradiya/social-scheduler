@@ -12,6 +12,7 @@ const pollLeonardoJob = async (generationId: string, apiKey: string) : Promise<s
     const maxRetries = 20;
     const delay = 5000;
 
+    // Polling loop for the generation status
     for(let i = 0; i < maxRetries; i++){
         try {
            const response = await axios.get(`https://cloud.leonardo.ai/api/rest/v1/generations/${generationId}`, {headers: {

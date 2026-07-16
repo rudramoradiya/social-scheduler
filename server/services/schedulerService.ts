@@ -13,6 +13,8 @@ export const initScheduler = ()=>{
 
             for (const post of postsToPublish) {
                 try {
+                     
+                    // Find connected Zernio accounts for the user and the platforms specified in the post
                     const accounts = await Account.find({
                         user: post.user,
                         platform: {$in: post.platforms},
@@ -20,15 +22,19 @@ export const initScheduler = ()=>{
                         zernioAccountId: {$exists: true}
                     })
 
+                    // If no connected accounts are found, log and continue to the next post
                     if(accounts.length === 0){
                         console.log(`No connected Zernio accounts found for post ${post._id}`);
                         continue;
                     }
+
+                    // Prepare the payload for Zernio API
                     const zernioPlatforms = accounts.map((acc)=>({
                         platform: acc.platform as any,
                         accountId: acc.zernioAccountId!
                     }))
 
+                    // Create the payload for the Zernio API request
                     const payload = {
                         content: post.content,
                         publishNow: true,
@@ -38,10 +44,12 @@ export const initScheduler = ()=>{
 
                     console.log(`Publishing post ${post._id} to Zernio with media: ${post.mediaUrl || "none"}`)
 
+                    // Call Zernio API to create the post
                     const response = await zernio.posts.createPost({
                         body: payload
                     })
 
+                    // Extract the published post from the response
                     const publishedPost = (response.data as any)?.post || response.data;
 
                     if(!publishedPost){
