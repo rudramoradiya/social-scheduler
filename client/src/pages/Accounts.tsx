@@ -33,7 +33,7 @@ const Accounts = () => {
 
   useEffect(()=>{
 
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);// URLSearchParams : This is a built-in JavaScript interface that provides utility methods to work with the query string of a URL. It allows you to easily retrieve, add, or modify query parameters in a URL.
     const connectedPlatform = params.get("connected");
     const connectedUsername = params.get("username");
     const syncNeeded = params.get("sync") === "true";

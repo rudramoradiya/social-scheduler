@@ -50,7 +50,7 @@ const Scheduler = () => {
       return;
     }
 
-    const scheduledFor = new Date(`${scheduledDate}T${scheduledTime}`).toISOString();
+    const scheduledFor = new Date(`${scheduledDate}T${scheduledTime}`).toISOString();// Convert to ISO string for backend compatibility 
     const formData = new FormData();
     formData.append("content", content);
     formData.append("scheduledFor", scheduledFor);
